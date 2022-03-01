@@ -4,8 +4,8 @@ import { Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 export default function UsersMap() {
-  const [values, setvalue] = useState([]);
-  const getusers = async () => {
+  const [values, setValue] = useState([]);
+  const getUsers = async () => {
     try {
       const result = await axios({
         url: "https://learning-task4.herokuapp.com/users?allowPagination=false",
@@ -14,13 +14,13 @@ export default function UsersMap() {
           Authorization: `Bearer ${localStorage.getItem("name")}`,
         },
       });
-      setvalue(result.data);
+      setValue(result.data);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
-    getusers();
+    getUsers();
   }, []);
   return (
     <div>

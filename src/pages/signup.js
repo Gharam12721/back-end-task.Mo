@@ -8,14 +8,14 @@ export default function SignUp(){
     const [username ,setUsername] =useState(null);
 
 
-    const [loading ,setloading] = useState( false);
-    const [error ,seterror] = useState(null);
-    const [data , setdata] = useState(null);
+    const [loading ,setLoading] = useState( false);
+    const [error ,setError] = useState(null);
+    const [data , setData] = useState(null);
 
     const SignUphand = async () => {
         try {
-            seterror(false);
-            setloading(true);
+            setError(false);
+            setLoading(true);
             console.log({
                 email:email,
                 password:password,
@@ -33,13 +33,13 @@ export default function SignUp(){
             });
             console.log(result);
             window.location.href="/login";
-            setdata(result);
-            setloading(false);
+            setData(result);
+            setLoading(false);
             
         } catch (error) {
             console.log(error);
-            seterror(true);
-            setloading(false);
+            setError(true);
+            setLoading(false);
         }
     };
     return(

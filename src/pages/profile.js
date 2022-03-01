@@ -4,8 +4,8 @@ import { Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 export default function Profile() {
-  const [value, setvalue] = useState(0);
-  const getusers = async () => {
+  const [value, setValue] = useState(0);
+  const getUsers = async () => {
     try {
       const result = await axios({
         url: "https://learning-task4.herokuapp.com/users/profile",
@@ -14,13 +14,13 @@ export default function Profile() {
           Authorization: `Bearer ${localStorage.getItem("name")}`,
         },
       });
-      setvalue(result.data);
+      setValue(result.data);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
-    getusers();
+    getUsers();
   }, []);
   return (
     <div>

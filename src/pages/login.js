@@ -6,14 +6,14 @@ export default function Login() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
-  const [loading, setloading] = useState(false);
-  const [error, seterror] = useState(null);
-  const [data, setdata] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
 
   const Loginhand = async () => {
     try {
-      seterror(false);
-      setloading(true);
+      setError(false);
+      setLoading(true);
       console.log({
         email: email,
         password: password,
@@ -29,12 +29,12 @@ export default function Login() {
       console.log(result);
       localStorage.setItem("name", result.data.token);
       window.location.href = "/";
-      setdata(result);
-      setloading(false);
+      setData(result);
+      setLoading(false);
     } catch (error) {
       console.log(error);
-      seterror(true);
-      setloading(false);
+      setError(true);
+      setLoading(false);
     }
   };
   return (
