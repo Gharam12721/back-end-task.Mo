@@ -1,0 +1,39 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import { Card } from "react-bootstrap";
+import { useEffect, useState } from "react";
+
+export default function Profile() {
+  const [value, setvalue] = useState(0);
+  const getusers = async () => {
+    try {
+      const result = await axios({
+        url: "https://learning-task4.herokuapp.com/users/profile",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("name")}`,
+        },
+      });
+      setvalue(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getusers();
+  }, []);
+  return (
+    <div>
+      <Card style={{ width: "25rem", margin: "20px" }}>
+        <Card.Img variant="top" src={value.photo} />
+        <Card.Body>
+          <Card.Title> Name: {value.username}</Card.Title>
+          <Card.Text>
+            Email : {value.email} <br/>
+            Type : {value.role}
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+}
